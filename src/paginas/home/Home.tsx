@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {Typography, Grid, Button} from '@material-ui/core';
 import { Box } from '@mui/material'
-
+import { toast } from 'react-toastify';
 import './Home.css';
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
@@ -18,7 +18,16 @@ function Home() {
     
     useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
+        toast.error('Você precisa estar logado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
           navigate("/login")
   
       }
